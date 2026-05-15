@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>NIROGM</title>
+
+  <!-- FUENTE -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- ICONOS -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:#050505;
+      color:#d6d6d6;
+      overflow-x:hidden;
+    }
+
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero{
+      min-height:100vh;
+      position:relative;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:40px 20px;
+      overflow:hidden;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+
+      background:
+      linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.55),
+        rgba(0,0,0,0.82)
+      ),
+      url('fondo.jpg');
+
+      background-size:cover;
+      background-position:center;
+      z-index:-2;
+      transform:scale(1.02);
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+
+      background:
+      radial-gradient(
+        circle at center,
+        rgba(255,255,255,0.03),
+        transparent 60%
+      );
+
+      z-index:-1;
+    }
+
+    .container{
+      width:100%;
+      max-width:1200px;
+    }
+
+    /* =========================
+       LOGO
+    ========================== */
+
+    .logo{
+      width:180px;
+      margin-bottom:35px;
+
+      opacity:0.96;
+
+      filter:
+      drop-shadow(0 0 25px rgba(255,215,150,0.12));
+
+      animation:fadeUp 1.2s ease;
+    }
+
+    /* =========================
+       SUBTITULO
+    ========================== */
+
+    .subtitle{
+      max-width:760px;
+      margin:auto;
+
+      color:#b8bcc4;
+
+      font-size:1.08rem;
+      line-height:1.9;
+      letter-spacing:0.4px;
+
+      animation:fadeUp 1.8s ease;
+    }
+
+    /* =========================
+       BOTONES
+    ========================== */
+
+    .buttons{
+      margin-top:50px;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-wrap:wrap;
+
+      gap:18px;
+
+      animation:fadeUp 2s ease;
+    }
+
+    .btn{
+      text-decoration:none;
+
+      color:#d8d8d8;
+
+      padding:17px 30px;
+
+      border-radius:18px;
+
+      border:1px solid rgba(214,214,214,0.12);
+
+      background:rgba(255,255,255,0.035);
+
+      backdrop-filter:blur(14px);
+
+      transition:0.35s ease;
+
+      font-weight:500;
+      letter-spacing:0.5px;
+
+      min-width:230px;
+    }
+
+    .btn i{
+      margin-right:10px;
+    }
+
+    .btn:hover{
+      transform:translateY(-6px);
+
+      background:rgba(255,255,255,0.08);
+
+      border-color:rgba(255,215,150,0.20);
+
+      box-shadow:
+      0 0 35px rgba(255,215,150,0.08);
+    }
+
+    /* =========================
+       SERVICIOS
+    ========================== */
+
+    .services{
+      padding:110px 25px;
+      background:#050505;
+    }
+
+    .section-title{
+      text-align:center;
+
+      font-size:2.4rem;
+
+      font-weight:600;
+
+      letter-spacing:2px;
+
+      margin-bottom:70px;
+
+      color:#d9d9d9;
+    }
+
+    .cards{
+      max-width:1200px;
+
+      margin:auto;
+
+      display:grid;
+
+      grid-template-columns:
+      repeat(auto-fit,minmax(260px,1fr));
+
+      gap:28px;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.035);
+
+      border:1px solid rgba(255,255,255,0.06);
+
+      backdrop-filter:blur(14px);
+
+      border-radius:26px;
+
+      padding:38px;
+
+      transition:0.4s ease;
+
+      overflow:hidden;
+      position:relative;
+    }
+
+    .card:hover{
+      transform:translateY(-8px);
+
+      border-color:rgba(255,215,150,0.16);
+
+      box-shadow:
+      0 0 40px rgba(255,215,150,0.05);
+    }
+
+    .card i{
+      font-size:2rem;
+
+      color:#d4c0a1;
+
+      margin-bottom:24px;
+    }
+
+    .card h3{
+      font-size:1.28rem;
+
+      margin-bottom:14px;
+
+      color:#dddddd;
+    }
+
+    .card p{
+      color:#aeb4bc;
+
+      line-height:1.8;
+
+      font-size:0.96rem;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer{
+      padding:45px 20px;
+
+      text-align:center;
+
+      background:#040404;
+
+      border-top:
+      1px solid rgba(255,255,255,0.05);
+
+      color:#7d848d;
+
+      font-size:0.9rem;
+    }
+
+    /* =========================
+       ANIMACIONES
+    ========================== */
+
+    @keyframes fadeUp{
+
+      from{
+        opacity:0;
+        transform:translateY(35px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media(max-width:768px){
+
+      .logo{
+        width:145px;
+      }
+
+      .subtitle{
+        font-size:1rem;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .section-title{
+        font-size:2rem;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="container">
+
+      <!-- LOGO -->
+      <img src="logo.png" alt="NIROGM" class="logo">
+
+      <!-- TEXTO -->
+      <p class="subtitle">
+
+        Diseño, estrategia y presencia digital.
+
+        Impulsamos marcas y negocios modernos mediante creatividad,
+        tecnología e inteligencia digital.
+
+      </p>
+
+      <!-- BOTONES -->
+
+      <div class="buttons">
+
+        <!-- WHATSAPP -->
+
+        <a
+          href="https://wa.me/51959951975?text=Hola%20NIROGM,%20quiero%20información%20sobre%20tus%20servicios"
+          class="btn"
+        >
+          <i class="fa-brands fa-whatsapp"></i>
+          Contactar
+        </a>
+
+        <!-- LLAMAR -->
+
+        <a
+          href="tel:+51959951975"
+          class="btn"
+        >
+          <i class="fa-solid fa-phone"></i>
+          Llamar
+        </a>
+
+        <!-- GUARDAR CONTACTO -->
+
+        <a
+          href="contacto.vcf"
+          class="btn"
+          download
+        >
+          <i class="fa-solid fa-address-card"></i>
+          Guardar contacto
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SERVICIOS -->
+
+  <section class="services">
+
+    <h2 class="section-title">
+      Servicios
+    </h2>
+
+    <div class="cards">
+
+      <!-- CARD -->
+
+      <div class="card">
+
+        <i class="fa-solid fa-shirt"></i>
+
+        <h3>
+          Corte de Vinil Textil
+        </h3>
+
+        <p>
+          Producción y personalización textil con acabados profesionales.
+        </p>
+
+      </div>
+
+      <!-- CARD -->
+
+      <div class="card">
+
+        <i class="fa-solid fa-layer-group"></i>
+
+        <h3>
+          Catálogos Digitales
+        </h3>
+
+        <p>
+          Diseños modernos optimizados para ventas online y WhatsApp.
+        </p>
+
+      </div>
+
+      <!-- CARD -->
+
+      <div class="card">
+
+        <i class="fa-solid fa-video"></i>
+
+        <h3>
+          Videos Publicitarios
+        </h3>
+
+        <p>
+          Edición visual profesional para redes sociales y promoción comercial.
+        </p>
+
+      </div>
+
+      <!-- CARD -->
+
+      <div class="card">
+
+        <i class="fa-solid fa-lightbulb"></i>
+
+        <h3>
+          Asesoría de Marca
+        </h3>
+
+        <p>
+          Construcción y desarrollo de identidad para nuevos negocios.
+        </p>
+
+      </div>
+
+      <!-- CARD -->
+
+      <div class="card">
+
+        <i class="fa-solid fa-robot"></i>
+
+        <h3>
+          IA para Ventas
+        </h3>
+
+        <p>
+          Estrategias digitales y automatización inteligente para impulsar ventas.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    © 2026 NIROGM — Todos los derechos reservados.
+  </footer>
+
+</body>
+</html>
